@@ -70,6 +70,7 @@ db.query(clientTableQuery, (err, rusult) => {
   }
 });
 
-app.listen(240, () => {
-  console.log("server is running....");
+const PORT = process.env.PORT || 240;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
