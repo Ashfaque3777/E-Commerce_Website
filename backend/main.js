@@ -70,7 +70,7 @@ db.query(clientTableQuery, (err, rusult) => {
   }
 });
 
-const PORT = process.env.PORT || 240;
+const PORT = process.env.MYSQLPORT || 240;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
