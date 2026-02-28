@@ -1,3 +1,4 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const db = require("./databaseConfig.js");
@@ -5,7 +6,6 @@ const productRouter = require("./routes/productRoutes.js");
 const cartRouter = require("./routes/cartRoutes.js");
 const clientRouter = require("./routes/clientRoutes.js");
 const adminRouter = require("./routes/adminRoutes.js");
-const dotenv = require("dotenv");
 
 dotenv.config();
 let app = express();
