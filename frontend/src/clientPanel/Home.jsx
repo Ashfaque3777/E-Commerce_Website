@@ -92,8 +92,6 @@ export default function Home() {
     handleInp();
   }, [inp]);
 
-  console.log(import.meta.env.VITE_API_URL);
-
   return (
     <>
       <aside className="flex fixed h-screen w-64 flex-col overflow-y-auto border-r bg-black px-5 py-8">
