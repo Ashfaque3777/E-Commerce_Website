@@ -85,7 +85,7 @@ export default function ClientNavbar() {
           {auth.user ? (
             <div className="w-[40px] h-[40px] bg-black rounded-full">
               <img
-                src={`${API}/${auth.user.image}`}
+                src={`${API}/uploads/${auth.user.image}`}
                 className="h-full w-full rounded-full"
                 alt="not_found"
               />

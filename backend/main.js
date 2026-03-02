@@ -17,7 +17,7 @@ app.use(
     credentials: true,
   }),
 );
-app.use(express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 app.use("/api", productRouter);
 app.use("/api", cartRouter);
 app.use("/api", clientRouter);

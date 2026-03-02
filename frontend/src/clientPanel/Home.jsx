@@ -202,7 +202,7 @@ export default function Home() {
             key={data.id}
           >
             <img
-              src={`${API}/${data.image}`}
+              src={`${API}/uploads/${data.image}`}
               className="z-0 h-full w-full rounded-md object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>

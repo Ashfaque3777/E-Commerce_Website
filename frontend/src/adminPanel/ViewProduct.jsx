@@ -41,7 +41,7 @@ export default function ViewProduct() {
           >
             <img
               src={
-                `${API}/${data.image}` || "placeholder-image-url"
+                `${API}/uploads/${data.image}` || "placeholder-image-url"
               }
               className="z-0 h-full w-full rounded-md object-cover"
             />

@@ -87,7 +87,7 @@ export default function AdminTable() {
                               <div className="h-10 w-10 flex-shrink-0">
                                 <img
                                   className="h-10 w-10 rounded-full object-cover"
-                                  src={`${API}/${data.image}`}
+                                  src={`${API}/uploads/${data.image}`}
                                   alt="not found"
                                 />
                               </div>
