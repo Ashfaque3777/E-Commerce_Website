@@ -11,7 +11,12 @@ dotenv.config();
 let app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://e-commerce-website-two-pearl-88.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(express.static("uploads"));
 app.use("/api", productRouter);
 app.use("/api", cartRouter);
