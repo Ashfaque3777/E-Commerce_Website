@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API } from "../config";
 
 export default function UpdateProduct() {
   let { id } = useParams();
@@ -26,7 +27,7 @@ export default function UpdateProduct() {
   async function getProductById() {
     setLoading(true);
     let result = await axios.get(
-      `http://localhost:240/api/getProductById/${id}`
+      `${API}/api/getProductById/${id}`
     );
     setData(result.data[0]);
     setLoading(false);
@@ -51,7 +52,7 @@ export default function UpdateProduct() {
 
     try {
       setIsSubmitting(true);
-      await axios.put(`http://localhost:240/api/updateProduct/${id}`, data);
+      await axios.put(`${API}/api/updateProduct/${id}`, data);
       toast.success("Product updated successfully");
       setIsSubmitting(false);
       navigation("/admin");

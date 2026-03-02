@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { API } from "../config";
 
 export default function ViewProduct() {
   let { id } = useParams();
@@ -13,7 +14,7 @@ export default function ViewProduct() {
     try {
       setLoading(true);
       let result = await axios.get(
-        `http://localhost:240/api/getProductById/${id}`
+        `${API}/api/getProductById/${id}`
       );
       setData(result.data);
       setLoading(false);
@@ -40,7 +41,7 @@ export default function ViewProduct() {
           >
             <img
               src={
-                `http://localhost:240/${data.image}` || "placeholder-image-url"
+                `${API}/${data.image}` || "placeholder-image-url"
               }
               className="z-0 h-full w-full rounded-md object-cover"
             />

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API } from "../config";
 
 export default function AdminTable() {
   let [data, setData] = useState([]);
@@ -9,7 +10,7 @@ export default function AdminTable() {
 
   async function getData() {
     setLoading(true);
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     setData(result.data);
     setLoading(false);
   }
@@ -22,7 +23,7 @@ export default function AdminTable() {
     if (caution == true) {
       try {
         setLoading(true);
-        await axios.delete(`http://localhost:240/api/deleteProduct/${id}`);
+        await axios.delete(`${API}/api/deleteProduct/${id}`);
         getData();
         setLoading(false);
       } catch (error) {
@@ -86,7 +87,7 @@ export default function AdminTable() {
                               <div className="h-10 w-10 flex-shrink-0">
                                 <img
                                   className="h-10 w-10 rounded-full object-cover"
-                                  src={`http://localhost:240/${data.image}`}
+                                  src={`${API}/${data.image}`}
                                   alt="not found"
                                 />
                               </div>

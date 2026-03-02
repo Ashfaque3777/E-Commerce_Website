@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import userContext from "./userContext";
 import axios from "axios";
+import { API } from "../config";
 
 export default function UserContextProvider({ children }) {
   let [cartList, setCartList] = useState(false);
@@ -14,7 +15,7 @@ export default function UserContextProvider({ children }) {
   });
 
   let clientLogin = async (data) => {
-    let result = await axios.post("http://localhost:240/api/loginClient", data);
+    let result = await axios.post(`${API}/api/loginClient`, data);
     if (result.data.isMatch == true) {
       let token = result.data.token;
       localStorage.setItem("token", token);
@@ -30,7 +31,7 @@ export default function UserContextProvider({ children }) {
   };
 
   let profile = async () => {
-    let result = await axios.post("http://localhost:240/api/verify");
+    let result = await axios.post(`${API}/api/verify`);
     setAuth((prevAuth) => ({ ...prevAuth, user: result.data[0] }));
   };
 

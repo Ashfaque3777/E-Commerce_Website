@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import userContext from "../context/userContext";
+import { API } from "../config";
 
 const menuItems = [
   {
@@ -84,7 +85,7 @@ export default function ClientNavbar() {
           {auth.user ? (
             <div className="w-[40px] h-[40px] bg-black rounded-full">
               <img
-                src={`http://localhost:240/${auth.user.image}`}
+                src={`${API}/${auth.user.image}`}
                 className="h-full w-full rounded-full"
                 alt="not_found"
               />

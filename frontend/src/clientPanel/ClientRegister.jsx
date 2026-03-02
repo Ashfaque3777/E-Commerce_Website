@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API } from "../config";
 
 export default function ClientRegister() {
   let navigation = useNavigate();
@@ -25,7 +26,7 @@ export default function ClientRegister() {
     data.append("image", image);
 
     try {
-      await axios.post("http://localhost:240/api/saveClient", data, {
+      await axios.post(`${API}/api/saveClient`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

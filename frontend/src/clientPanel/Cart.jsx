@@ -3,6 +3,7 @@ import { Trash, Heart } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import userContext from "../context/userContext";
+import { API } from "../config";
 
 export default function Cart() {
   let [data, setData] = useState([]);
@@ -13,7 +14,7 @@ export default function Cart() {
     if (auth.user) {
       let userName = auth.user.email.split("@")[0];
       let result = await axios.get(
-        `http://localhost:240/api/getCart/${userName}`
+        `${API}/api/getCart/${userName}`
       );
       setData(result.data);
       setCartList(result.data.length);
@@ -30,7 +31,7 @@ export default function Cart() {
     if (flag == true) {
       let userName = auth.user.email.split("@")[0];
       await axios.delete(
-        `http://localhost:240/api/deleteCart/${userName}/${id}`
+        `${API}/api/deleteCart/${userName}/${id}`
       );
       getData();
     }
@@ -64,7 +65,7 @@ export default function Cart() {
                 <div className="flex w-full space-x-2 sm:space-x-4">
                   <img
                     className="h-20 w-20 flex-shrink-0 rounded object-contain outline-none dark:border-transparent sm:h-32 sm:w-32"
-                    src={`http://localhost:240/${data.image}`}
+                    src={`${API}/${data.image}`}
                     alt="not found"
                   />
                   <div className="flex w-full flex-col justify-between pb-4">

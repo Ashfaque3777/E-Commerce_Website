@@ -2,6 +2,7 @@ import axios from "axios";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "../config";
 
 export default function AddProduct() {
   let navigation = useNavigate();
@@ -36,7 +37,7 @@ export default function AddProduct() {
     data.append("image", image);
 
     try {
-      await axios.post("http://localhost:240/api/saveProduct", data, {
+      await axios.post(`${API}/api/saveProduct`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

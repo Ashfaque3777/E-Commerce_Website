@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import userContext from "../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API } from "../config";
 
 export default function Home() {
   let [data, setData] = useState([]);
@@ -11,7 +12,7 @@ export default function Home() {
   let { setCartList, auth } = useContext(userContext);
 
   async function allData() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     setData(result.data);
   }
 
@@ -21,19 +22,19 @@ export default function Home() {
   }, [auth]);
 
   async function filterShoes() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     let final = result.data.filter((item) => item.productType == "Shoes");
     setData(final);
   }
 
   async function filterShirt() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     let final = result.data.filter((item) => item.productType == "Shirt");
     setData(final);
   }
 
   async function filterbtwtwo() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     let final = result.data.filter(
       (item) => item.productPrice >= 1000 && item.productPrice <= 2000
     );
@@ -41,7 +42,7 @@ export default function Home() {
   }
 
   async function filterbtwfive() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     let final = result.data.filter(
       (item) => item.productPrice >= 2000 && item.productPrice <= 5000
     );
@@ -49,7 +50,7 @@ export default function Home() {
   }
 
   async function filterbtwten() {
-    let result = await axios.get("http://localhost:240/api/getProduct");
+    let result = await axios.get(`${API}/api/getProduct`);
     let final = result.data.filter(
       (item) => item.productPrice >= 5000 && item.productPrice <= 10000
     );
@@ -59,7 +60,7 @@ export default function Home() {
   async function handleCart(data) {
     if (auth.user) {
       let userName = auth.user.email.split("@")[0];
-      await axios.post(`http://localhost:240/api/saveCart/${userName}`, data);
+      await axios.post(`${API}/api/saveCart/${userName}`, data);
       toast.success("Your item is added...");
       getCart();
     } else {
@@ -71,7 +72,7 @@ export default function Home() {
     if (auth.user) {
       let userName = auth.user.email.split("@")[0];
       let result = await axios.get(
-        `http://localhost:240/api/getCart/${userName}`
+        `${API}/api/getCart/${userName}`
       );
       setCartList(result.data.length);
     }
@@ -79,7 +80,7 @@ export default function Home() {
 
   async function handleInp() {
     let result = await axios.get(
-      `http://localhost:240/api/searchProduct/${inp}`
+      `${API}/api/searchProduct/${inp}`
     );
     setData(result.data);
   }
@@ -201,7 +202,7 @@ export default function Home() {
             key={data.id}
           >
             <img
-              src={`http://localhost:240/${data.image}`}
+              src={`${API}/${data.image}`}
               className="z-0 h-full w-full rounded-md object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>

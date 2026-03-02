@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import userContext from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+import { API } from "../config";
 
 export default function AdminLogin() {
   let navigation = useNavigate();
@@ -22,7 +23,7 @@ export default function AdminLogin() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    let result = await axios.post("http://localhost:240/api/adminLogin", data);
+    let result = await axios.post(`${API}/api/adminLogin`, data);
     if (result.data == true) {
       setIsAdminLogin(true);
       navigation("/admin");
